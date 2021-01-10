@@ -12,7 +12,8 @@ function a11yProps(index) {
   };
 }
 
-function LinkTab(props) {
+{
+  /*function LinkTab(props) {
   return (
     <Tab
       component="a"
@@ -23,8 +24,10 @@ function LinkTab(props) {
     />
   );
 }
+*/
+}
 
-function LinkTabTest(props) {
+function LinkTab(props) {
   return <Tab component={Link} {...props} />;
 }
 
@@ -52,9 +55,9 @@ export default function NavTabs() {
           onChange={handleChange}
           aria-label="nav tabs example"
         >
-          <LinkTabTest label="Home" to="/" {...a11yProps(0)} />
-          <LinkTabTest label="Leaderboard" to="/leader" {...a11yProps(2)} />
-          <LinkTabTest label="About" to="/about" {...a11yProps(1)} />
+          <LinkTab label="Home" to="/" {...a11yProps(0)} />
+          <LinkTab label="Leaderboard" to="/leader" {...a11yProps(2)} />
+          <LinkTab label="About" to="/about" {...a11yProps(1)} />
         </Tabs>
       </AppBar>
     </div>
