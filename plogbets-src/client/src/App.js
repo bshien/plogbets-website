@@ -1,12 +1,24 @@
-import React from "react";
-import NavBar from "./components/Navbar";
+import React, { useEffect } from "react";
+import NavBar from "./components/ui-tools/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Leaderboard from "./components/Leaderboard";
-import Home from "./components/Home";
-import About from "./components/About";
-import MakeBet from "./components/MakeBet";
+import { useDispatch } from "react-redux";
+
+import { getBets } from "./actions/posts";
+import Leaderboard from "./components/pages/Leaderboard";
+import Home from "./components/pages/Home";
+import About from "./components/pages/About";
+import MakeBet from "./components/bets/MakeBet";
 
 const App = () => {
+  {
+    /*const classes = useStyles();*/
+  }
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getBets());
+  }, [dispatch]);
+
   return (
     <Router>
       <div>
