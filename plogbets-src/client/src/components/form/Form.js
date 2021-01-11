@@ -1,8 +1,14 @@
-import React from "react";
-import { Textfield, Button, Typography, Paper } from "@material-ui/core";
+import React, { useState } from "react";
+import { TextField, Button, Typography, Paper } from "@material-ui/core";
 
 import useStyles from "./styles";
 const Form = () => {
+  const [postData, setPostData] = useState({
+    wager: "",
+    title: "",
+    message: "",
+    tags: "",
+  });
   const classes = useStyles();
 
   const handleSubmit = () => {};
@@ -14,19 +20,8 @@ const Form = () => {
         className={`${classes.root} ${classes.form}`}
         onSubmit={handleSubmit}
       >
-        <Typography variant="h6">
-          {currentId ? `Editing "${post.title}"` : "Creating a Memory"}
-        </Typography>
-        <TextField
-          name="creator"
-          variant="outlined"
-          label="Creator"
-          fullWidth
-          value={postData.creator}
-          onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
-          }
-        />
+        <Typography variant="h6">Make a Bet</Typography>
+
         <TextField
           name="title"
           variant="outlined"
@@ -34,6 +29,14 @@ const Form = () => {
           fullWidth
           value={postData.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
+        />
+        <TextField
+          name="wager"
+          variant="outlined"
+          label="wager"
+          fullWidth
+          value={postData.wager}
+          onChange={(e) => setPostData({ ...postData, wager: e.target.value })}
         />
         <TextField
           name="message"

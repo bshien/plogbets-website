@@ -3,7 +3,7 @@ import NavBar from "./components/ui-tools/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import { getBets } from "./actions/posts";
+import { getBets } from "./actions/bets";
 import Leaderboard from "./components/pages/Leaderboard";
 import Home from "./components/pages/Home";
 import About from "./components/pages/About";
