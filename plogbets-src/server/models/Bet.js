@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 
 const betSchema = mongoose.Schema({
-  privacy: Boolean, // False if public
+  privacy: {
+    type: Boolean, // False if public
+    default: false,
+  },
   creator: String,
   question: String,
   participants: [String],
@@ -18,7 +21,7 @@ const betSchema = mongoose.Schema({
     type: Date,
     default: new Date(), // TODO
   },
-  answer: Number, // +1 if yes, -1 if no, 0 if not yet decided
+  //answer: Number, // +1 if yes, -1 if no, 0 if not yet decided
 });
 
 const Bet = mongoose.model("Bet", betSchema);

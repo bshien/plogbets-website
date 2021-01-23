@@ -10,3 +10,13 @@ export const getBets = () => async (dispatch) => {
     console.log(error.message);
   }
 };
+
+export const createBet = (bet) => async (dispatch) => {
+  try {
+    const { data } = await api.createBet(bet);
+
+    dispatch({ type: "CREATE", payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};

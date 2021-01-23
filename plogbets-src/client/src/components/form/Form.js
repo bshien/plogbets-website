@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
-
+import { useDispatch } from "react-redux";
 import useStyles from "./styles";
+import { createBet } from "../../actions/bets";
 const Form = () => {
-  const [postData, setPostData] = useState({
-    wager: "",
-    title: "",
+  const [betData, setBetData] = useState({
+    wagers: [],
+    question: "",
     message: "",
     tags: "",
   });
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(betData);
+
+    dispatch(createBet(betData));
+  };
   return (
     <Paper className={classes.paper}>
       <form
@@ -23,20 +30,20 @@ const Form = () => {
         <Typography variant="h6">Make a Bet</Typography>
 
         <TextField
-          name="title"
+          name="question"
           variant="outlined"
-          label="Title"
+          label="Question"
           fullWidth
-          value={postData.title}
-          onChange={(e) => setPostData({ ...postData, title: e.target.value })}
+          value={betData.question}
+          onChange={(e) => setBetData({ ...betData, question: e.target.value })}
         />
         <TextField
           name="wager"
           variant="outlined"
           label="wager"
           fullWidth
-          value={postData.wager}
-          onChange={(e) => setPostData({ ...postData, wager: e.target.value })}
+          value={betData.wager}
+          onChange={(e) => setBetData({ ...betData, wagers: [e.target.value] })}
         />
         <TextField
           name="message"
@@ -45,19 +52,17 @@ const Form = () => {
           fullWidth
           multiline
           rows={4}
-          value={postData.message}
-          onChange={(e) =>
-            setPostData({ ...postData, message: e.target.value })
-          }
+          value={betData.message}
+          onChange={(e) => setBetData({ ...betData, message: e.target.value })}
         />
         <TextField
           name="tags"
           variant="outlined"
           label="Tags (coma separated)"
           fullWidth
-          value={postData.tags}
+          value={betData.tags}
           onChange={(e) =>
-            setPostData({ ...postData, tags: e.target.value.split(",") })
+            setBetData({ ...betData, tags: e.target.value.split(",") })
           }
         />
 
